@@ -1,0 +1,8 @@
+@media only screen and (max-width: 720px) {
+	#sign-out-btn:after {
+		content: " Sign out";
+	}
+	.avatar-user span {
+		font-size: 13px;
+	}
+}

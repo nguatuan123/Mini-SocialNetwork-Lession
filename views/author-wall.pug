@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+html(lang="en")
+	head
+		meta(charset="UTF-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		title #{dataAuthorInfo.name}
+		link(rel="stylesheet", href="css/style/author-wall.css")
+		link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css", integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS", crossorigin="anonymous")
+		link(rel="stylesheet", href="https://use.fontawesome.com/releases/v5.6.3/css/all.css", integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/", crossorigin="anonymous")
+	body
+		nav.navbar.navbar-expand-lg.navbar-light.bg-light
+			a.navbar-brand.text-danger(href='/') Coders.Tokyo
+			button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
+				span.navbar-toggler-icon
+			#navbarNav.collapse.navbar-collapse.w-100.order-3.dual-collapse2
+				ul.navbar-nav
+					li.nav-item.active
+						a.nav-link(href='/')
+							| Home 
+							span.sr-only (current)
+				ul.navbar-nav.ml-auto
+					span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					li.nav-item.mr-1
+						a.nav-link.author-link(href='/'+dataAuthorInfo.id) #{dataAuthorInfo.name}
+					li.nav-item 
+						button.btn.btn-outline-secondary#sign-out-btn
+							i.fas.fa-power-off
+		div.container.pb-5
+			div.header.bg-dark.rounded-bottom.d-flex.align-items-end.justify-content-start
+				div#avatar-author.bg-secondary(style="background-image: url(" + dataAuthorInfo.avatar + ")")
+					label(for="upload-avatar") <i class="fas fa-camera-retro"></i>Upload
+					input.d-none(type="file", id="upload-avatar")
+				span &nbsp;
+				h3.text-white #{dataAuthorInfo.name}
+
+		.modal.fade.bd-example-modal-lg#upload-avatar-modal(tabindex='-1', role='dialog', aria-labelledby='myLargeModalLabel', aria-hidden='true')
+			.modal-dialog.modal-lg
+				.modal-content
+					.modal-header
+						h5#exampleModalCenterTitle.modal-title Upload avatar
+						button.close(type='button', data-dismiss='modal', aria-label='Close')
+							span(aria-hidden='true') &times;
+					.modal-body
+						img.shadow(id="preview-img-upload", width="60%", style="margin-left: 20%;")
+					.modal-footer
+						div.spinner-border.d-none#spinner-upload(role="status")
+							span.sr-only Loading...
+						button.btn.btn-secondary(type='button', data-dismiss='modal') Cancer
+						button.btn.btn-primary#upload-avatar-btn(type='button') Save Avatar
+
+		script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js", integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo", crossorigin="anonymous")
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js", integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut", crossorigin="anonymous")
+		script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js", integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k", crossorigin="anonymous")
+		script(src="https://unpkg.com/axios/dist/axios.min.js")
+		script(src="js/author-wall/index.js")

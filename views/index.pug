@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+html(lang="en")
+	head
+		meta(charset="UTF-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		title Home
+		link(rel="stylesheet", href="css/responsive/index.responsive.css")
+		link(rel="stylesheet", href="css/style/index.css")
+		link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css", integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS", crossorigin="anonymous")
+		link(rel="stylesheet", href="https://use.fontawesome.com/releases/v5.6.3/css/all.css", integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/", crossorigin="anonymous")
+	body
+		nav.navbar.navbar-expand-lg.navbar-light.bg-light
+			a.navbar-brand.text-danger(href='/') Coders.Tokyo
+			button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
+				span.navbar-toggler-icon
+			#navbarNav.collapse.navbar-collapse.w-100.order-3.dual-collapse2
+				ul.navbar-nav
+					li.nav-item.active
+						a.nav-link(href='/')
+							| Home 
+							span.sr-only (current)
+				ul.navbar-nav.ml-auto
+					span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					li.nav-item.mr-1
+						a.nav-link.author-link(href='/'+dataAuthor.id) #{dataAuthor.name}
+					li.nav-item 
+						a(href="/func/sign-out")
+							button.btn.btn-outline-secondary#sign-out-btn
+								i.fas.fa-power-off
+		div.container.mt-5
+			form(action="javascript: void(0)")
+				.input-group.mb-3
+					.input-group-prepend
+						span.input-group-text Search
+					input.form-control#search-key(type='text', aria-label='Search text')
+					.input-group-append
+						button.btn.btn-outline-secondary#search-btn(type='submit') Search
+			div.d-flex.justify-content-center.mb-3
+				div.spinner-border.text-secondary.text-center.d-none#load-snipper(role="status")
+					span.sr-only Loading...
+			table.table
+				thead
+					tr
+						th(scope='col') #
+						th(scope='col') Name
+						th(scope='col') Age
+						th(scope='col') Views
+				tbody#users-list
+
+			div#load-result-base
+			div.w-100.d-flex.justify-content-center.mb-5
+				.spinner-border.text-secondary.d-none#progress-icon(role='status')
+					span.sr-only Loading...
+				button.btn.btn-secondary#pagination-btn(value="1", type='button')
+						| Load more
+
+
+		script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js', integrity='sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut', crossorigin='anonymous')
+		script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js', integrity='sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k', crossorigin='anonymous')
+		script(src="https://unpkg.com/axios/dist/axios.min.js")
+		script(type="text/javascript") var dataUsers = !{JSON.stringify(dataUsers).replace(/<\//g, '<\\/')} 
+		script(src="js/index/index.js")
